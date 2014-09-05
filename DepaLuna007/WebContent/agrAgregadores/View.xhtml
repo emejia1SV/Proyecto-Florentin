@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AgrAgregadoresViewDlg" widgetVar="AgrAgregadoresViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewAgrAgregadoresTitle}" closeOnEscape="true">
+
+            <h:form id="AgrAgregadoresViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{agrAgregadoresController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewAgrAgregadoresLabel_id}"/>
+                        <h:outputText value="#{agrAgregadoresController.selected.id}" title="#{myBundle.ViewAgrAgregadoresTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewAgrAgregadoresLabel_nombreAgregador}"/>
+                        <h:outputText value="#{agrAgregadoresController.selected.nombreAgregador}" title="#{myBundle.ViewAgrAgregadoresTitle_nombreAgregador}"/>
+
+                        <h:outputText value="#{myBundle.ViewAgrAgregadoresLabel_estado}"/>
+                        <h:outputText value="#{agrAgregadoresController.selected.estado}" title="#{myBundle.ViewAgrAgregadoresTitle_estado}"/>
+
+                        <h:outputText value="#{myBundle.ViewAgrAgregadoresLabel_idPais}"/>
+                        <h:outputText value="#{agrAgregadoresController.selected.idPais.id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="AgrAgregadoresViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

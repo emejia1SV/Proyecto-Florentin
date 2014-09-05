@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./myTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="top">
+    </ui:define>
+
+    <ui:define name="content">
+     <h:form >
+    
+ 
+    <h3 style="margin-top:0" >#{myBundle.SELECIONAR_OPCION}</h3>
+    <p:outputPanel id="customPanel">
+        <p:selectOneRadio 	id="customRadio"
+        					value="#{JSFManagedBeanSelect2.selct2}" 
+        					layout="custom">
+            
+            <f:selectItem 	itemLabel="#{myBundle.UNO_A_UNO}" 
+            				itemValue="numero" />
+            
+            <f:selectItem 	itemLabel="#{myBundle.POR_LOTES}" 
+            				itemValue="upload" />
+        </p:selectOneRadio>
+ 
+        <h:panelGrid 	columns="2" 
+        				styleClass="panelGridCenter" 
+        				cellpadding="5">
+            
+            <p:radioButton 	id="opt1" 
+            				for="customRadio" 
+            				itemIndex="0" />
+            
+            <h:outputLabel 	for="opt1" 
+            				value="#{myBundle.UNO_A_UNO}" />
+            
+            <p:radioButton 	id="opt2" 
+            				for="customRadio" 
+            				itemIndex="1" />
+            
+            <h:outputLabel for="opt2" value="#{myBundle.POR_LOTES}" />
+            
+       </h:panelGrid>
+    </p:outputPanel>
+  
+    <p:commandButton 	value="#{myBundle.EJECUTAR}" 
+    					action="#{JSFManagedBeanSelect2.voySelect2()}" 
+    					icon="ui-icon-check" 
+    					ajax="true"/>
+</h:form>
+	</ui:define>
+
+
+
+</ui:composition>
+
+

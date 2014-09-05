@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="./myTemplate.xhtml" xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="content">
+		<h:form>
+			<p:panelGrid 	styleClass="panelGridCenter" 
+							columns="2">
+							
+				<p:outputLabel 	value="#{myBundle.INGRESAR_NUMERO}" 
+								for="numero"/>
+								
+				<p:inputText 	id="numero" 
+								value="#{jSFManagedBean.numero}"
+								required="true" />
+								
+				<p:tooltip 	id="toolTipGrow" 
+							for="numero" 
+							value="#{myBundle.EJEMPLO}"
+							showEffect="clip" 
+							hideEffect="explode" />
+							
+				<h:form styleClass="panelGridCenter">
+					
+					<p:selectOneRadio 	styleClass="panelGridCenter"
+										value="#{jSFManagedBean.exportOption}">
+						
+						<f:selectItem 	itemValue="PDF" 
+										itemLabel="PDF" />
+						
+						<f:selectItem 	itemValue="HTML" 
+										itemLabel="HTML" />
+					</p:selectOneRadio>
+
+					<h:commandButton 	value="#{myBundle.EJECUTAR}"
+										action="#{jSFManagedBean.execute}" />
+				</h:form>
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+

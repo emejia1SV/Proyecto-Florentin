@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:mj="http://mojarra.dev.java.net/mojarra_ext"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+	<h:form id="menuForm2">
+		<p:menubar>
+			<p:menuitem 	value="#{myBundle.Home}" 
+							url="/Select1.xhtml"
+							icon="ui-icon-home" />
+			
+			<p:menuitem 	value="#{myBundle.DEPURAR_NUMEROS}"
+							action="#{JSFManagedBeanSelect1.voyASelect2()}" />
+			
+			<p:menuitem 	value="#{myBundle.REPORTES}"
+							action="#{JSFManagedBeanSelect1.voyAReportes()}" />
+			
+			<p:submenu 		label="#{myBundle.Maintenance}">
+					<p:menuitem 	value="#{myBundle.AgrAgregadoresHeading}..."
+									action="#{JSFManagedBeanSelect1.voyAconfiguracion()}" 
+									ajax="false" />
+					
+					<p:menuitem 	value="#{myBundle.AgrMetodosHeading}..." />
+					
+					<p:menuitem 	value="#{myBundle.AgrPaisesHeading}..." />
+					
+					<p:menuitem 	value="#{myBundle.AgrParametrosHeading}..." />
+					
+					<p:menuitem 	value="#{myBundle.AgrParametrosSistemaHeading}..." />
+			
+			</p:submenu>
+			<p:menuitem 	value="#{myBundle.LOGOUT}"
+							action="#{JSFManagedBeanLogin.voyParaLogin()}"
+							icon="ui-icon-extlink" />
+		</p:menubar>
+	</h:form>
+</ui:composition>
+</html>

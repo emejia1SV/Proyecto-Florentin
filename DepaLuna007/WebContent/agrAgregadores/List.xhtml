@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="AgrAgregadoresListForm">
+
+        <p:panel header="#{myBundle.ListAgrAgregadoresTitle}">
+            <p:contextMenu for="datalist">  
+                <p:menuitem id="createMenuItem" icon="ui-icon-plus" value="#{myBundle.Create}" />
+                <p:menuitem id="readMenuItem" icon="ui-icon-search" value="#{myBundle.View}" />
+                <p:menuitem id="updateMenuItem" icon="ui-icon-pencil" value="#{myBundle.Edit}" />
+                <p:menuitem id="deleteMenuItem" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value=""
+                         var="item"
+                         rowKey=""
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         >
+
+                <p:ajax event="rowSelect"   />
+                <p:ajax event="rowUnselect" />
+                <p:ajax event="rowDblselect" />
+
+                <p:column >
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAgrAgregadoresTitle_id}"/>
+                    </f:facet>
+                    <h:outputText />
+                </p:column>
+
+
+                <p:column >
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAgrAgregadoresTitle_nombreAgregador}"/>
+                    </f:facet>
+                    <h:outputText />
+                </p:column>
+
+
+                <p:column >
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAgrAgregadoresTitle_estado}"/>
+                    </f:facet>
+                    <h:outputText value="estado"/>
+                </p:column>
+
+
+                <p:column >
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAgrAgregadoresTitle_idPais}"/>
+                    </f:facet>
+                    <h:outputText value="idPais.id"/>
+                </p:column>
+
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}"  />
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{myBundle.View}"  />
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{myBundle.Edit}"  />
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{myBundle.Delete}">
+                
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/confirmacion.xhtml"/>
+    </h:form>
+
+</ui:composition>

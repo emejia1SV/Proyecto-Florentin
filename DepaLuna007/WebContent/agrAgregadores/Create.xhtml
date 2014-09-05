@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AgrAgregadoresCreateDlg" widgetVar="AgrAgregadoresCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateAgrAgregadoresTitle}" closeOnEscape="true">
+
+            <h:form id="AgrAgregadoresCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateAgrAgregadoresLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{agrAgregadoresController.selected.id}" title="#{myBundle.CreateAgrAgregadoresTitle_id}" required="true" requiredMessage="#{myBundle.CreateAgrAgregadoresRequiredMessage_id}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateAgrAgregadoresLabel_nombreAgregador}" for="nombreAgregador" />
+                        <p:inputText id="nombreAgregador" value="#{agrAgregadoresController.selected.nombreAgregador}" title="#{myBundle.CreateAgrAgregadoresTitle_nombreAgregador}" required="true" requiredMessage="#{myBundle.CreateAgrAgregadoresRequiredMessage_nombreAgregador}" size="255" maxlength="255"/>
+
+                        <p:outputLabel value="#{myBundle.CreateAgrAgregadoresLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{agrAgregadoresController.selected.estado}" title="#{myBundle.CreateAgrAgregadoresTitle_estado}" required="true" requiredMessage="#{myBundle.CreateAgrAgregadoresRequiredMessage_estado}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateAgrAgregadoresLabel_idPais}" for="idPais" />
+                        <p:selectOneMenu id="idPais" value="#{agrAgregadoresController.selected.idPais}" required="true" requiredMessage="#{myBundle.CreateAgrAgregadoresRequiredMessage_idPais}" converter="agrPaisesConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{agrPaisesController.items}"
+                                           var="idPaisItem"
+                                           itemValue="#{idPaisItem}"
+                                           itemLabel="#{idPaisItem.id.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{agrAgregadoresController.saveNew}" value="#{myBundle.Save}" update="display,:AgrAgregadoresListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AgrAgregadoresCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="AgrAgregadoresCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

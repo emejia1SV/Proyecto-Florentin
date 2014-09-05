@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="./myTemplate.xhtml" xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<ui:define name="content">
+		<ui:composition template="./myTemplate.xhtml">
+			<ui:define name="content">
+				<p:panel header="#{myBundle.Welcome}">
+					<center>
+						<img src="./img/claroooo.png" height="220" width="200" />
+						<h3>
+							<h:outputText value="#{myBundle.WelcomeMessage}"></h:outputText>
+						</h3>
+					</center>
+				</p:panel>
+			</ui:define>
+		</ui:composition>
+	</ui:define>
+</ui:composition>

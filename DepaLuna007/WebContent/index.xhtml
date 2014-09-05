@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:mj="http://mojarra.dev.java.net/mojarra_ext"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link href="./css/default.css" rel="stylesheet" type="text/css" />
+    <link href="./css/cssLayout.css" rel="stylesheet" type="text/css" />
+</h:head>
+<body>
+	<center>
+		<h:graphicImage eight="220" 
+						width="200" 
+						value="/img/claroooo.png" />
+	</center>
+	<p:panel 	styleClass="panelGridCenter" 
+				header="Bienvenido al Sistema">
+		
+		<h:form>
+			<p:panelGrid 	styleClass="panelGridCenter" 
+							columns="2">
+				
+				<p:outputLabel 	value="#{myBundle.USUARIO}" 
+								for="usuario" />
+								
+				<p:inputText 	id="usuario"
+								value="#{JSFManagedBeanLogin.usuario}"
+								required="true" />
+								
+				<p:outputLabel 	value="#{myBundle.PASSWORD}" 
+								for="pass" />
+				
+				<p:password 	id="pass"
+								value="#{JSFManagedBeanLogin.pass}"				 
+								required="true" />
+				
+				<p:message 		style="color: red"
+								for="pass" />
+				
+				<p:commandButton 	action="#{JSFManagedBeanLogin.voyLogin()}"
+									value="#{myBundle.INICIAR_SESION}" 
+									ajax="true" />
+			</p:panelGrid>
+		</h:form>
+	</p:panel>
+<p:panel header="#{myBundle.BOTTOM} "></p:panel>
+</body>
+</html>

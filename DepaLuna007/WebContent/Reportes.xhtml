@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="./myTemplate.xhtml" xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="top">
+	</ui:define>
+
+	<ui:define name="content">
+		<form id="form">
+			<p:growl id="msgs" showDetail="true"></p:growl>
+			<p:dataTable styleClass="panelGridCenter" id="fechas" var="fecha"
+				value="#{tableBean.fecha}"  paginator="true"
+				rows="3"
+				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rowsPerPageTemplate="1,2,3,5">
+				<p:column headerText="FECHA" style="width:50px"
+					sortBy="#{fecha.fecha}" filterBy="#{fecha.fecha}">
+					<h:outputText value="#{fecha.fecha}" />
+				</p:column>
+				<p:column style="width:20px">
+					<h:panelGrid columns="2" styleClass="actions" cellpadding="2">
+						<h:form>
+							<p:commandButton value="Ver" id="selectButton" update=":display"
+								oncomplete="CarDialog.show()" icon="ui-icon-search" title="View">
+								<f:setPropertyActionListener value="#{fecha}"
+									target="#{tableBean.selectedFecha}" />
+							</p:commandButton>
+						</h:form>
+					</h:panelGrid>
+				</p:column>
+
+
+			</p:dataTable>
+
+			<p:dialog header="Detalle de fecha" widgetVar="CarDialog"
+				resizable="false" id="CarDig" showEffect="fade" hideEffect="explode"
+				modal="true">
+				<h:panelGrid id="display" columns="3" cellpadding="3"
+					style="margin: 0 auto;" >
+					<f:facet name="header">
+						<h:outputText value="#{myBundle.REPORT_LABEL}" />
+					</f:facet>
+					<h:outputText value="Fecha:" />
+					<h:outputText value="#{tableBean.selectedFecha.fecha}"
+						style="font-weigth:bold" />
+					<h:form styleClass="panelGridCenter">
+						<p:selectOneRadio styleClass="panelGridCenter"
+							value="#{reportsBean.exportOption}">
+							<f:selectItem itemValue="PDF" itemLabel="PDF" />
+							<f:selectItem itemValue="HTML" itemLabel="HTML" />
+							<!--<f:selectItem itemValue="EXCEL" itemLabel="EXCEL" />  -->
+							<f:selectItem itemValue="RTF" itemLabel="RTF" />
+						</p:selectOneRadio>
+						<h:commandButton value="#{myBundle.OBTENER_REPORTE}"
+							action="#{reportsBean.execute}" />
+					</h:form>
+					<h:outputText value="Errores: " />
+						<h:outputText value="22 " />
+					<h:form>
+						<p:commandButton value="Precesar Erroneos"></p:commandButton>
+					</h:form>
+				</h:panelGrid>
+			</p:dialog>
+		</form>
+	</ui:define>
+</ui:composition>
+
+
